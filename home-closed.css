@@ -1,0 +1,7 @@
+/* Option B: nothing open on Home. */
+/* With no panel open, show what each button does. */
+.mode-switch.layout-three .mode-sub { display: block; font-size: 0.78rem; margin-top: 0.2rem; line-height: 1.3; }
+.mode-switch.layout-three .mode-btn { align-content: start; }
+/* No empty space under the buttons until one is picked. */
+body.home-closed .app-body { padding-block: 0.5rem 0.5rem; }
+body.home-closed .hero.hero-app { padding-bottom: 0.5rem; }

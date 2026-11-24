@@ -1,0 +1,11 @@
+/* Home: one centered column on every screen size.
+   The heading, buttons, and the panel that opens under them share the same center line. */
+.hero-app .hero-single { margin-inline: auto; text-align: center; }
+.hero-app .hero-lede { margin-inline: auto; }
+.hero-app .mode-switch { margin-inline: auto; }
+.hero-app .prefs-details { text-align: left; }
+.hero-app .prefs-details > summary { display: block; width: fit-content; margin-inline: auto; }
+#surprisePanel, #calmPanel { max-width: 760px; margin-inline: auto; }
+#surprisePanel .surprise-card { margin-inline: auto; }
+#surprisePanel .surprise-actions, #surprisePanel .surprise-note { justify-content: center; text-align: center; }
+#guidePanel .newcomer-row { justify-content: center; }

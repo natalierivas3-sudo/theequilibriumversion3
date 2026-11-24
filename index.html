@@ -28,6 +28,8 @@
 <link rel="stylesheet" href="draft.css">
 <link rel="stylesheet" href="v58.css">
 <link rel="stylesheet" href="skills.css">
+<link rel="stylesheet" href="home-closed.css">
+<link rel="stylesheet" href="center.css">
 </head>
 <body>
 
@@ -39,6 +41,7 @@
     <div class="container">
         <h3>What's different from Test version 57</h3>
         <ul>
+            <li><strong>Nothing open on Home.</strong> Guide me, Surprise me, and Calm me stay closed until you pick one. Tap the same button again to close it.</li>
             <li><strong>Help is easier to reach.</strong> Links can open straight to Calm me (#calm), Talk to someone (#talk), or Surprise me (#surprise).</li>
             <li><strong>Searching a feeling finds support.</strong> Words like “stressed,” “lonely,” or “therapy” bring up counseling and support first. “dogs” now finds dog spots.</li>
             <li><strong>No dead ends.</strong> “Clear filters” shows everything again, and Study spots is no longer emptied by it. An empty search offers someone to talk to.</li>
@@ -145,7 +148,7 @@
             <p class="hero-lede">Free and low-cost ways to feel a little better around UT and Austin.</p>
 
             <div class="mode-switch layout-three" id="modeSwitch" role="tablist" aria-label="How do you want to find something?">
-                <button type="button" role="tab" id="tabGuide" class="mode-btn active" aria-selected="true" aria-controls="guidePanel">
+                <button type="button" role="tab" id="tabGuide" class="mode-btn" aria-selected="false" aria-controls="guidePanel">
                     <span class="mode-title">Guide me</span>
                     <span class="mode-sub">Pick what would help</span>
                 </button>
@@ -155,12 +158,12 @@
                 </button>
                 <button type="button" role="tab" id="tabCalm" class="mode-btn mode-calm" aria-selected="false" aria-controls="calmPanel">
                     <span class="mode-title">Calm me</span>
-                    <span class="mode-sub">Set something aside or make something</span>
+                    <span class="mode-sub">Calm down or let it out</span>
                 </button>
             </div>
 
             <!-- Preferences shared by both modes -->
-            <details class="prefs-details" id="prefsDetails">
+            <details class="prefs-details" id="prefsDetails" hidden>
                 <summary>Filters <span class="prefs-summary" id="prefsSummary"></span></summary>
             <div class="prefs" aria-label="Preferences">
                 <div class="pref-group" role="group" aria-labelledby="prefSocialLabel">
@@ -191,7 +194,7 @@
 
     <section class="container app-body" data-home>
         <!-- GUIDE ME -->
-        <div id="guidePanel" role="tabpanel" aria-labelledby="tabGuide">
+        <div id="guidePanel" role="tabpanel" aria-labelledby="tabGuide" hidden>
             <div class="need-grid" role="group" aria-label="What would help">
                 <button type="button" class="need-card" data-need="support"><span class="selector-icon" aria-hidden="true">💬</span><span class="selector-title">Talk to someone</span></button>
                 <button type="button" class="need-card" data-need="study"><span class="selector-icon" aria-hidden="true">📚</span><span class="selector-title">Find a study spot</span></button>
@@ -569,6 +572,7 @@
 <script src="views.js"></script>
 <script src="v58.js"></script>
 <script src="skills.js"></script>
+<script src="home-closed.js"></script>
 
 </body>
 </html>
