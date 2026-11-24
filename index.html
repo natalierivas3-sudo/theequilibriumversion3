@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The Equilibrium</title>
+<meta name="description" content="Free and low-cost ways to feel a little better around UT and Austin: crisis lines, a 4-minute calming exercise, study spots, and places to rest, move, and connect.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Equilibrium">
+<meta property="og:title" content="The Equilibrium · Student Wellness Hub">
+<meta property="og:description" content="Free and low-cost ways to feel a little better around UT and Austin. Need help now? One tap to 988.">
+<meta property="og:url" content="https://natalierivas3-sudo.github.io/equilibrium-test/">
+<meta property="og:image" content="https://natalierivas3-sudo.github.io/equilibrium-test/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Equilibrium, Student Wellness Hub for UT and Austin">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="leaflet.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="prototype.css">
+<link rel="stylesheet" href="draft.css">
+<link rel="stylesheet" href="v58.css">
+<link rel="stylesheet" href="skills.css">
+</head>
+<body>
+
+<div class="test-strip" id="testStrip">
+    <span><strong>Draft v58</strong> · compare with Test version 57</span>
+    <button type="button" id="changesToggle" aria-expanded="false" aria-controls="changesPanel">What's different?</button>
+</div>
+<div class="changes-panel" id="changesPanel" hidden>
+    <div class="container">
+        <h3>What's different from Test version 57</h3>
+        <ul>
+            <li><strong>Help is easier to reach.</strong> Links can open straight to Calm me (#calm), Talk to someone (#talk), or Surprise me (#surprise).</li>
+            <li><strong>Searching a feeling finds support.</strong> Words like “stressed,” “lonely,” or “therapy” bring up counseling and support first. “dogs” now finds dog spots.</li>
+            <li><strong>No dead ends.</strong> “Clear filters” shows everything again, and Study spots is no longer emptied by it. An empty search offers someone to talk to.</li>
+            <li><strong>All resources has category buttons</strong> instead of one “All ideas” button.</li>
+            <li><strong>Shorter Study spots page.</strong> Empty “Photo needed” boxes are hidden until photos are added.</li>
+            <li><strong>Easier to read.</strong> Darker orange and gray text that meets contrast standards, slightly larger labels, and a cleaner header on small phones.</li>
+            <li><strong>Better when shared.</strong> Links show a title, description, and preview image in texts and on social media, plus a site icon and a “Share The Equilibrium” button.</li>
+            <li><strong>Study spots map in “Find a study spot.”</strong> The map shows right above the cards. Tap “Show where I am” to sort every spot closest first, with walking times.</li>
+            <li><strong>Coffee shops on the map:</strong> Epoch (North Loop), Bennu (Highland), Flightpath, Codependent, Monkey Nest, and Austin Central Library now have pins. The map can zoom out to show them, with a faded street map beyond campus.</li>
+            <li><strong>Calmer “Calm me.”</strong> Five choices up front: Set it aside, Rant, 3 good things, Other coping skills, and a trauma-informed guided video. Not sure? Three one-tap questions (how you feel, how much time, what sounds better) suggest one thing to try and two backups. Everything else is folded under “See all ways to steady yourself.”</li>
+            <li><strong>“How regulated do you feel?”</strong> The check-in starts with a 1–5 scale you slide or tap, from Steady to Can't cope. At 5 it shows crisis support first, a 1-minute breathing guide, and other ways to cope.</li>
+            <li><strong>Insight Timer</strong> (free meditation app) is now first in All resources, shows under the Free filter, and is in Calm me.</li>
+            <li><strong>New Coping skills page.</strong> “How are you right now?” (overwhelmed, numb, or stressed) shows a few matching tools: breathing pacer, cool down fast, move it out, squeeze &amp; release, 5-4-3-2-1, pause button, distraction shuffle, name the feeling, do the opposite, daily basics. Exercises have a 0–10 rating before and after. Star tools to build “My kit.” A crisis bar stays on screen. Adapted from DBT.</li>
+            <li><strong>Tip of the day</strong> on Home rotates through the coping tools.</li>
+            <li><strong>Cleaner cards:</strong> student quotes removed; practical tips stay.</li>
+            <li>The Crisis page also offers gentler options for when it isn't an emergency.</li>
+        </ul>
+    </div>
+</div>
+
+<header>
+    <div class="container nav-container">
+        <a href="#home" class="brand-logo">
+            <span class="brand-title">The Equilibrium</span>
+            <span class="brand-subtitle">Student Wellness Hub</span>
+        </a>
+
+        <a href="#crisis" class="help-now-pill">Need help now?</a>
+
+        <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="primary-nav" class="nav-links">
+            <a href="#home" class="active">Home</a>
+            <a href="#skills">Coping skills</a>
+            <a href="#study-section">Study spots</a>
+            <a href="#library">Resources</a>
+            <a href="#maps">UT maps</a>
+            <a href="#saved" data-open-saved>My saved <span class="saved-count" data-saved-count>0</span></a>
+            <a href="#about" data-about-link>Origin story</a>
+            <a href="https://forms.gle/pxBk7z8dh8vFdkC1A" target="_blank" rel="noopener noreferrer" class="dynamic-feedback-link nav-feedback" data-feedback="nav">Feedback ↗</a>
+        </nav>
+    </div>
+</header>
+
+<main id="home">
+    <!-- ABOUT (its own page: shown alone when the address ends in #about) -->
+    <section class="about-page" id="about" aria-labelledby="aboutTitle" hidden>
+        <div class="container about-wrap">
+            <a href="#home" class="about-back" data-about-back>← Back to The Equilibrium</a>
+
+            <p class="about-eyebrow">Our story</p>
+            <h1 id="aboutTitle">Where do you go when you don't know where to look?</h1>
+
+            <div class="about-founder">
+                <img class="about-photo" src="natalie.jpg" alt="Natalie Rivas" width="88" height="88">
+                <div>
+                    <p class="about-name">Natalie Rivas</p>
+                    <p class="about-role">Founder · MD/MPH candidate, Dell Medical School and UTHealth Houston School of Public Health · UT Austin, 2017–2021 · Future psychiatrist</p>
+                    <a class="about-linkedin" id="aboutLinkedIn" href="#" target="_blank" rel="noopener noreferrer" hidden>LinkedIn ↗</a>
+                </div>
+            </div>
+
+            <div class="about-gist" aria-label="In short">
+                <p class="about-gist-label">In short</p>
+                <ul>
+                    <li>A <strong>first-gen student</strong> who arrived at UT overwhelmed, unsure where to go, and <strong>unsure how to feel connected to this new community</strong>.</li>
+                    <li>The Equilibrium is <strong>the guide I wish I'd had</strong>: places to rest, study, move, connect, and get support.</li>
+                    <li>Free and low-cost, <strong>picked by students</strong>, shaped by your feedback.</li>
+                </ul>
+            </div>
+
+            <div class="about-body">
+                <p>I still remember the drive in August 2017. Hurricane Harvey was hitting the Coastal Bend as my grandmother and my dad drove me up from Beeville to <strong>a school I had never even toured</strong>.</p>
+                <p><strong>I was overwhelmed from the moment I arrived.</strong> UT felt like a city of its own, with more students on campus than people in my hometown, and I was culture shocked and unsure of what to do with myself.</p>
+                <p>Being <strong>the first in my family to go to college</strong> added another layer. There was no one at home who could tell me how any of it worked, like where to go when I was struggling or that it was okay to need a break. So much of what helps you settle into a new place is knowledge that gets passed down, and no one had been able to pass it down to me yet.</p>
+                <p>When I look back on my years in Austin, I often think about that 18 year old and what would have made that first year easier. <strong>She didn’t need more pamphlets.</strong> She needed someone to show her a quiet place to study, a park to sit in, where to meet people, and who to talk to, and to remind her that <strong>she belonged in every one of those places</strong>.</p>
+                <p>That is who I made The Equilibrium for. It’s <strong>the guide I wish I had found back then</strong>, both in Austin and at UT and even during my time at Dell Med.</p>
+
+                <h2>Why this matters to me</h2>
+                <p>I believe that <strong>mental health care doesn’t begin in a clinic</strong>, but in the places and people that keep us steady long before things get hard. My public health training has only made that clearer. Where we live and spend our time shapes how we feel, so if I can make those places easier to find, especially for students who are new, far from home, or the first in their families like me, I believe <strong>that counts as care too</strong>.</p>
+
+                <h2>What The Equilibrium is</h2>
+                <p>The Equilibrium brings together <strong>free and low-cost ways to rest, move, get outside, study, connect, and find support</strong>, around UT and across Austin. It's for students, newcomers, and anyone who could use a little more balance in their day.</p>
+                <p>Built by students, for students still finding their people and their places. It started as a project with the Dell Med Psychiatry Interest Group. <strong>Students pick the spots, and your feedback decides what gets added next.</strong></p>
+
+                <h2>What it is, and what it isn't</h2>
+                <p>This is a student-maintained guide, <strong>not a substitute for professional or emergency care</strong>. If you need help right now, <a href="#crisis" data-about-back>crisis support is available 24/7</a>.</p>
+
+                <h2>Help it grow</h2>
+                <p>Know a spot we're missing, or see something out of date? Tell us. It's anonymous and takes a minute.</p>
+                <a href="https://forms.gle/pxBk7z8dh8vFdkC1A" target="_blank" rel="noopener noreferrer" class="btn btn-primary dynamic-feedback-link" data-feedback="about">Send feedback</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- HERO + MAIN EXPERIENCE -->
+    <section class="hero hero-app" data-home>
+        <div class="container hero-single">
+            <h1>What do you need today?</h1>
+            <p class="hero-lede">Free and low-cost ways to feel a little better around UT and Austin.</p>
+
+            <div class="mode-switch layout-three" id="modeSwitch" role="tablist" aria-label="How do you want to find something?">
+                <button type="button" role="tab" id="tabGuide" class="mode-btn active" aria-selected="true" aria-controls="guidePanel">
+                    <span class="mode-title">Guide me</span>
+                    <span class="mode-sub">Pick what would help</span>
+                </button>
+                <button type="button" role="tab" id="tabSurprise" class="mode-btn" aria-selected="false" aria-controls="surprisePanel">
+                    <span class="mode-title">Surprise me</span>
+                    <span class="mode-sub">One idea, right now</span>
+                </button>
+                <button type="button" role="tab" id="tabCalm" class="mode-btn mode-calm" aria-selected="false" aria-controls="calmPanel">
+                    <span class="mode-title">Calm me</span>
+                    <span class="mode-sub">Set something aside or make something</span>
+                </button>
+            </div>
+
+            <!-- Preferences shared by both modes -->
+            <details class="prefs-details" id="prefsDetails">
+                <summary>Filters <span class="prefs-summary" id="prefsSummary"></span></summary>
+            <div class="prefs" aria-label="Preferences">
+                <div class="pref-group" role="group" aria-labelledby="prefSocialLabel">
+                    <span class="pref-label" id="prefSocialLabel">Who's around</span>
+                    <button type="button" class="pref-chip active" data-pref="social" data-value="any">No preference</button>
+                    <button type="button" class="pref-chip" data-pref="social" data-value="solo">Just me</button>
+                    <button type="button" class="pref-chip" data-pref="social" data-value="around">Around people</button>
+                    <button type="button" class="pref-chip" data-pref="social" data-value="connect">Connect with people</button>
+                </div>
+                <div class="pref-group" role="group" aria-labelledby="prefWhereLabel">
+                    <span class="pref-label" id="prefWhereLabel">Where</span>
+                    <button type="button" class="pref-chip active" data-pref="where" data-value="any">Anywhere</button>
+                    <button type="button" class="pref-chip" data-pref="where" data-value="campus">UT campus</button>
+                    <button type="button" class="pref-chip" data-pref="where" data-value="westcampus">West Campus</button>
+                    <button type="button" class="pref-chip" data-pref="where" data-value="austin">Around Austin</button>
+                    <button type="button" class="pref-chip" data-pref="where" data-value="online">Online / at home</button>
+                </div>
+                <div class="pref-group" role="group" aria-labelledby="prefCostLabel">
+                    <span class="pref-label" id="prefCostLabel">Cost</span>
+                    <button type="button" class="pref-chip active" data-pref="cost" data-value="any">Any</button>
+                    <button type="button" class="pref-chip" data-pref="cost" data-value="free">Free or included with UT</button>
+                    <span class="price-key" aria-hidden="true">$ under $10 · $$ $10–25 · $$$ $25+</span>
+                </div>
+            </div>
+            </details>
+        </div>
+    </section>
+
+    <section class="container app-body" data-home>
+        <!-- GUIDE ME -->
+        <div id="guidePanel" role="tabpanel" aria-labelledby="tabGuide">
+            <div class="need-grid" role="group" aria-label="What would help">
+                <button type="button" class="need-card" data-need="support"><span class="selector-icon" aria-hidden="true">💬</span><span class="selector-title">Talk to someone</span></button>
+                <button type="button" class="need-card" data-need="study"><span class="selector-icon" aria-hidden="true">📚</span><span class="selector-title">Find a study spot</span></button>
+                <button type="button" class="need-card" data-need="move"><span class="selector-icon" aria-hidden="true">⚡</span><span class="selector-title">Move my body</span></button>
+                <button type="button" class="need-card" data-need="outdoors"><span class="selector-icon" aria-hidden="true">🌳</span><span class="selector-title">Get outside</span></button>
+                <button type="button" class="need-card" data-need="break"><span class="selector-icon" aria-hidden="true">🍃</span><span class="selector-title">Take a break</span></button>
+                <button type="button" class="need-card" data-need="explore"><span class="selector-icon" aria-hidden="true">🤝</span><span class="selector-title">Explore Austin</span></button>
+            </div>
+
+            <div class="newcomer-row">
+                <button type="button" class="link-btn" data-need="newcomer">New to Austin or UT? →</button>
+                <button type="button" class="link-btn" data-need="doomscroll">Instead of doomscrolling →</button>
+            </div>
+
+            <div class="results" id="results" aria-live="polite">
+                <div class="results-head">
+                    <h2 id="resultsTitle">Good places to start</h2>
+                    <span class="results-count" id="resultsCount"></span>
+                    <a href="#spotMapWrap" class="link-btn map-link" id="mapJump" hidden>See study spots on a map →</a>
+                </div>
+                <div class="sub-chips" id="subChips"></div>
+                <div id="relaxedNote"></div>
+                <div class="resource-grid" id="resultsGrid"></div>
+                <div class="results-empty" id="resultsEmpty" hidden></div>
+                <button type="button" class="btn btn-ghost" id="showMoreBtn" hidden>Show more</button>
+            </div>
+        </div>
+
+        <!-- CALM ME -->
+        <div id="calmPanel" role="tabpanel" aria-labelledby="tabCalm" hidden>
+            <h2 class="calm-q">What would help right now?</h2>
+            <div class="calm-choices calm-choices-v58">
+                <button type="button" class="calm-choice" data-open-container>
+                    <span class="calm-ic" aria-hidden="true">🌊</span>
+                    <span class="calm-text"><strong>Set it aside</strong><small>A guided exercise</small></span>
+                    <span class="calm-time">4 min</span>
+                </button>
+                <button type="button" class="calm-choice" id="calmRantBtn" aria-expanded="false" aria-controls="calmRant">
+                    <span class="calm-ic" aria-hidden="true">💨</span>
+                    <span class="calm-text"><strong>Rant</strong><small>Get it out, then let it go</small></span>
+                    <span class="calm-time">Private</span>
+                </button>
+                <button type="button" class="calm-choice" data-calm-swap="three-good">
+                    <span class="calm-ic" aria-hidden="true">✍️</span>
+                    <span class="calm-text"><strong>3 good things</strong><small>Write them down</small></span>
+                    <span class="calm-time">3 min</span>
+                </button>
+                <a class="calm-choice" href="#skills">
+                    <span class="calm-ic" aria-hidden="true">🧰</span>
+                    <span class="calm-text"><strong>Other coping skills</strong><small>10 quick tools</small></span>
+                </a>
+                <a class="calm-choice" href="https://youtu.be/q1yfvkhmpIw?si=nUoWV-Luk8BvCY6u" target="_blank" rel="noopener noreferrer" data-calm-video>
+                    <span class="calm-ic" aria-hidden="true">▶️</span>
+                    <span class="calm-text"><strong>Guided video · 8 min</strong><small>Trauma-informed</small></span>
+                </a>
+            </div>
+            <div class="calm-prompt" id="calmPrompt" hidden></div>
+            <div class="calm-rant" id="calmRant" hidden></div>
+
+            <div class="calm-tailor" id="calmTailor">
+                <button type="button" class="calm-tailor-start" id="calmTailorStart">Not sure what you need? <strong>Answer 3 quick questions →</strong></button>
+                <div class="calm-steps" id="calmSteps" hidden aria-live="polite"></div>
+            </div>
+
+            <details class="calm-all" id="calmAll">
+                <summary>See all ways to steady yourself</summary>
+                <div class="calm-more-list">
+                    <button type="button" class="swap-row" id="calmMake" aria-expanded="false" aria-controls="calmPrompt">
+                        <span class="swap-icon" aria-hidden="true">✏️</span>
+                        <span class="swap-row-title">Make something: a small creative prompt</span>
+                        <span class="swap-row-time">2–5 min</span>
+                    </button>
+                    <a class="swap-row" href="https://insighttimer.com/" target="_blank" rel="noopener noreferrer">
+                        <span class="swap-icon" aria-hidden="true">🧘</span>
+                        <span class="swap-row-title">Insight Timer: free meditation app ↗</span>
+                        <span class="swap-row-time">Free</span>
+                    </a>
+                </div>
+                <div class="calm-more-list" id="calmMore"></div>
+            </details>
+            <p class="calm-note">Go at your own pace and stop anytime. If it's more than you can handle alone, <button type="button" class="link-btn" data-need-jump="support">talk to someone</button>.</p>
+        </div>
+
+        <!-- SURPRISE ME -->
+        <div id="surprisePanel" role="tabpanel" aria-labelledby="tabSurprise" hidden>
+            <div class="surprise-card" id="surpriseCard"></div>
+            <div class="surprise-actions">
+                <button type="button" class="btn btn-primary" id="surpriseNext">Try another</button>
+                <button type="button" class="btn btn-ghost" id="surpriseMore">See more like this</button>
+            </div>
+            <p class="surprise-note">Picks follow your preferences above. Support resources aren't included here. Use “Talk to someone” in Guide me.</p>
+        </div>
+    </section>
+
+    <section class="container sk-tip-wrap" data-home><p class="sk-tip" id="skTip"></p></section>
+
+    <section class="container home-crisis" data-home>
+        <p><strong>Struggling right now?</strong> Call or text <a href="tel:988">988</a>, any time. <a href="#crisis">More crisis options →</a></p>
+    </section>
+
+    <!-- STUDY SPOTS SECTION -->
+    <section class="container section-padding page-view" id="study-section">
+        <div class="library-section">
+            <div class="section-header" style="margin-bottom: 2rem;">
+                <h2>Study spots</h2>
+                <p>Student-picked study nooks, libraries, and cafés.</p>
+            </div>
+
+            <div class="library-controls">
+                <div class="filter-tags-row" role="group" aria-label="Study spot filters">
+                    <span class="filter-label">Filter:</span>
+                    <button type="button" class="study-filter-chip" data-study-filter="all">All spots</button>
+                    <button type="button" class="study-filter-chip" data-study-filter="quiet">Quiet</button>
+                    <button type="button" class="study-filter-chip" data-study-filter="social">Social</button>
+                    <button type="button" class="study-filter-chip" data-study-filter="indoor">Indoor</button>
+                    <button type="button" class="study-filter-chip" data-study-filter="outdoor">Outdoor</button>
+                    <button type="button" class="study-filter-chip" data-study-filter="openLate">Open late</button>
+                    <button type="button" class="study-filter-chip" data-study-filter="outlets">Outlets</button>
+                    <button type="button" class="study-filter-chip" data-study-filter="coffeeNearby">Coffee nearby</button>
+                    <button type="button" class="study-filter-chip" data-study-filter="nap">Nap spots</button>
+                </div>
+            </div>
+
+            <div class="study-disclaimer-notice">
+                Hours can change, so check before making a special trip.
+            </div>
+
+            <div class="spot-map-wrap" id="spotMapWrap">
+                <div class="spot-map-head">
+                    <h3>Map</h3>
+                    <span class="spot-map-count" id="spotMapCount"></span>
+                    <button type="button" class="btn btn-ghost btn-sm" id="spotLocate">Show where I am</button>
+                </div>
+                <p class="spot-map-privacy">Optional. Your location stays on your device and is never saved or shared.</p>
+                <p class="spot-map-msg" id="spotMapMsg" hidden></p>
+                <div class="spot-nearby" id="spotNearby" hidden></div>
+                <div class="spot-map" id="spotMap" role="region" aria-label="Map of study spots on campus"></div>
+                <div class="spot-map-legend">
+                    <span><span class="spot-pin spot-pin-indoor" aria-hidden="true"></span> Indoor</span>
+                    <span><span class="spot-pin spot-pin-outdoor" aria-hidden="true"></span> Outdoor</span>
+                    <span><span class="spot-pin spot-pin-indoor spot-pin-approx" aria-hidden="true"></span> Approximate</span>
+                    <span class="spot-map-hint">Tap a pin for details. Filters above update the map.</span>
+                </div>
+                <div class="spot-offmap" id="spotOffMap" hidden></div>
+            </div>
+
+            <div class="resource-grid" id="studySpotsGrid"></div>
+        </div>
+    </section>
+
+    <!-- FULL LIBRARY -->
+    <section class="container section-padding page-view" id="library">
+        <div class="library-section">
+            <div class="section-header" style="margin-bottom: 2rem;">
+                <h2>All resources</h2>
+                <p>Search everything on the site.</p>
+            </div>
+
+            <div class="library-controls">
+                <div class="search-bar-wrapper">
+                    <label for="searchInput" class="sr-only">Search resources</label>
+                    <span class="search-icon" aria-hidden="true">🔍</span>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Try: stressed, yoga, dogs, free">
+                </div>
+
+                <div class="filter-toolbar">
+                    <div class="filter-tags-row" role="group" aria-label="Filter tags"></div>
+                    <button type="button" id="clearFiltersBtn" class="clear-filters-btn">Clear filters</button>
+                </div>
+
+                <div class="result-count" id="resultCount" aria-live="polite"></div>
+            </div>
+
+            <div class="resource-grid" id="resourceGrid"></div>
+
+            <div id="noResultsMessage" class="no-results-message" style="display: none;">
+                No matches found. Try another word or <button type="button" class="link-btn" data-clear-search>see everything</button>.
+                <span class="no-results-support">Want to talk to someone? <a href="#talk">Support options</a> · <a href="tel:988">Call or text 988</a></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- COPING SKILLS (adapted from DBT) -->
+    <section class="container section-padding page-view" id="skills">
+        <div class="sk-wrap">
+            <div class="section-header sk-head">
+                <h2>Coping skills</h2>
+                <p>Quick tools to calm down or wake up. One skill at a time.</p>
+            </div>
+
+            <h3 class="sk-ask">How are you right now?</h3>
+            <div class="sk-states">
+                <button type="button" class="sk-state" data-sk-state="overwhelmed"><span aria-hidden="true">🔥</span><strong>Overwhelmed or panicking</strong><small>Too revved up</small></button>
+                <button type="button" class="sk-state" data-sk-state="numb"><span aria-hidden="true">🌫️</span><strong>Numb or shut down</strong><small>Zoned out, far away</small></button>
+                <button type="button" class="sk-state" data-sk-state="stressed"><span aria-hidden="true">😣</span><strong>Stressed but okay</strong><small>Getting by</small></button>
+            </div>
+            <div class="sk-row">
+                <button type="button" class="link-btn" data-sk-state="all">See all 10 tools</button>
+                <button type="button" class="sk-kit" id="skKitBtn">★ My kit <span id="skKitCount">0</span></button>
+                <label class="sk-reduce-opt"><input type="checkbox" id="skReduce"> Reduce motion</label>
+            </div>
+
+            <h3 class="sk-tools-head" id="skToolsHead" hidden></h3>
+            <div class="sk-tools" id="skTools"></div>
+            <div class="sk-nav" id="skNav" hidden>
+                <button type="button" class="sk-navbtn" data-sk-nav="prev" aria-label="Previous tool">←</button>
+                <button type="button" class="sk-navbtn" data-sk-nav="next" aria-label="Next tool">→</button>
+            </div>
+
+            <p class="sk-still">Tried these and still struggling? <a href="#talk">Find someone to talk to</a> · <a href="#crisis">Crisis support</a></p>
+            <p class="sk-fine">This is not therapy. Skills adapted from DBT (Linehan), in our own words. For professional support, see <a href="#library">Resources</a>.</p>
+        </div>
+        <div class="sk-crisisbar" role="note">
+            <span>In crisis?</span>
+            <a href="tel:988">Call 988</a><a href="sms:988">Text 988</a><a href="tel:5124712255">UT 24/7: 512-471-2255</a>
+        </div>
+    </section>
+
+    <div class="sk-overlay" id="skOverlay" hidden>
+        <div class="sk-panel" id="skPanel" role="dialog" aria-modal="true" aria-labelledby="skPanelTitle" tabindex="-1">
+            <div class="sk-panel-head">
+                <h2 id="skPanelTitle"></h2>
+                <button type="button" class="sk-close" id="skClose" aria-label="Close">✕</button>
+            </div>
+            <div class="sk-body" id="skBody"></div>
+            <p class="sk-panel-crisis">In crisis? <a href="tel:988">Call or text 988</a></p>
+        </div>
+    </div>
+
+    <!-- MAPS -->
+    <section class="container section-padding page-view" id="maps">
+        <div class="maps-section">
+            <div class="section-header" style="margin-bottom: 1.5rem;">
+                <h2>Useful & random UT maps</h2>
+                <p>Practical (and a little random) maps of campus.</p>
+            </div>
+            <div class="maps-grid">
+                <div class="map-card">
+                    <h4>Study spot map</h4>
+                    <div class="map-tags"><span>Interactive</span><span>Campus</span></div>
+                    <p>Every study spot on one campus map.</p>
+                    <a href="#spotMapWrap">Open study spot map &rarr;</a>
+                </div>
+                <div class="map-card">
+                    <h4>Campus Reset Walk</h4>
+                    <div class="map-tags"><span>30 min</span><span>1.5 mi</span><span>Free</span></div>
+                    <p>A loop to clear your head between classes.</p>
+                    <a href="#" data-dir data-dir-route="[&quot;UT Tower, Austin, TX&quot;, &quot;Turtle Pond, University of Texas at Austin&quot;, &quot;Blanton Museum of Art, Austin, TX&quot;, &quot;Littlefield Fountain, Austin, TX&quot;, &quot;UT Tower, Austin, TX&quot;]" data-dir-walk="1" data-dir-name="Campus Reset Walk">Open walking route &rarr;</a>
+                </div>
+                <div class="map-card">
+                    <h4>Racial Geography Tour of UT Austin</h4>
+                    <div class="map-tags"><span>Self-guided</span><span>360° video</span></div>
+                    <p>A walk through UT's racial history.</p>
+                    <a href="https://racialgeographytour.org/" target="_blank" rel="noopener noreferrer">Start the tour &rarr;</a>
+                </div>
+                <div class="map-card">
+                    <h4>UT interactive campus map</h4>
+                    <div class="map-tags"><span>Official UT</span><span>Buildings</span></div>
+                    <p>Find any building on campus.</p>
+                    <a href="https://experience.arcgis.com/experience/81d900a3c906482e9731a7a71eaaa178" target="_blank" rel="noopener noreferrer">Find a UT building &rarr;</a>
+                </div>
+                <div class="map-card">
+                    <h4>UT wellness maps</h4>
+                    <div class="map-tags"><span>Official UT</span><span>Naps</span><span>Green spaces</span></div>
+                    <p>Official UT nap spots and green spaces.</p>
+                    <a href="https://www.healthyhorns.utexas.edu/lwc/wellness-resource-maps.html" target="_blank" rel="noopener noreferrer">View wellness maps &rarr;</a>
+                </div>
+                <div class="map-card">
+                    <h4>Student restroom map</h4>
+                    <div class="map-tags"><span>Student-made</span><span>Accessible</span></div>
+                    <p>Quiet, clean, and accessible restrooms.</p>
+                    <a href="https://www.google.com/maps/d/u/0/viewer?mid=1aukCy323hAcFftXCBO_Vs45U9DITBec&usp=sharing" target="_blank" rel="noopener noreferrer">View restroom map &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CRISIS / IMMEDIATE SUPPORT (moved below the main experience) -->
+    <section class="container section-padding page-view" id="crisis">
+        <div class="urgent-banner">
+            <div class="urgent-content">
+                <h2>Need immediate support?</h2>
+                <p>If you are experiencing a mental health crisis, acute distress, or thoughts of self-harm, confidential support is available 24/7.</p>
+            </div>
+            <div class="urgent-action-box">
+                <div class="crisis-contact-item">
+                    <div>
+                        <span class="crisis-name">UT CMHC 24/7 Crisis Line</span>
+                        <p class="crisis-subtext">24/7 mental health crisis support for UT Austin students.</p>
+                    </div>
+                    <a href="tel:5124712255" class="crisis-number" data-crisis="call" data-crisis-id="cmhc-247">Call 512-471-2255</a>
+                </div>
+                <div class="crisis-contact-item">
+                    <div>
+                        <span class="crisis-name">988 Suicide & Crisis Lifeline</span>
+                        <p class="crisis-subtext">Free, confidential support available 24/7 via call or text.</p>
+                    </div>
+                    <div class="crisis-buttons">
+                        <a href="tel:988" class="crisis-number" data-crisis="call" data-crisis-id="lifeline-988">Call 988</a>
+                        <a href="sms:988" class="crisis-number" data-crisis="text" data-crisis-id="lifeline-988">Text 988</a>
+                    </div>
+                </div>
+                <div class="crisis-contact-item">
+                    <div>
+                        <span class="crisis-name">Integral Care 24/7 Crisis Helpline</span>
+                        <p class="crisis-subtext">For anyone in Austin and Travis County. Press 1 for English, then 1.</p>
+                    </div>
+                    <a href="tel:5124724357" class="crisis-number" data-crisis="call" data-crisis-id="integral-care-helpline">Call 512-472-HELP (4357)</a>
+                </div>
+                <div class="crisis-contact-item">
+                    <div>
+                        <span class="crisis-name">Crisis Text Line</span>
+                        <p class="crisis-subtext">Text-based support with a trained volunteer Crisis Counselor.</p>
+                    </div>
+                    <a href="sms:741741" data-sms="741741" data-sms-body="HOME" class="crisis-number" data-crisis="text" data-crisis-id="crisis-text-line">Text HOME to 741741</a>
+                </div>
+            </div>
+        </div>
+        <div class="crisis-gentle">
+            <p><strong>Not an emergency, but having a hard time?</strong></p>
+            <div class="crisis-gentle-links">
+                <a href="#calm">Calm down for 4 minutes</a>
+                <a href="#talk">Find someone to talk to</a>
+            </div>
+        </div>
+        <div class="disclaimer-note crisis-disclaimer">
+            <strong>Note:</strong> This hub is student-maintained and is not a substitute for emergency or professional medical care.
+        </div>
+    </section>
+
+    <!-- FEEDBACK (one line, one button) -->
+    <section class="container feedback-simple" id="feedback-section" data-home>
+        <p>Something missing or out of date?</p>
+        <a href="https://forms.gle/pxBk7z8dh8vFdkC1A" target="_blank" rel="noopener noreferrer" class="btn btn-primary dynamic-feedback-link" data-feedback="bottom">Send feedback</a>
+        <small>Anonymous · takes a minute</small>
+        <button type="button" class="btn btn-ghost share-site-btn" data-share-site>Share The Equilibrium</button>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-simple">
+            <span class="brand-title" style="color: var(--white); font-size: 1.25rem;">The Equilibrium</span>
+            <p>A Dell Med Psychiatry Interest Group project by Natalie Rivas, built with <a href="https://machinemindsautomation.com/#" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Machine Minds Automation</a>. Student-maintained, not a substitute for professional or emergency care.</p>
+            <nav class="footer-row"><a href="#about" data-about-link>Origin story</a><a href="#crisis">Need help now?</a><a href="https://forms.gle/pxBk7z8dh8vFdkC1A" target="_blank" rel="noopener noreferrer" class="dynamic-feedback-link">Send feedback ↗</a></nav>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; Dell Med Student Wellness Collective.</p>
+        </div>
+    </div>
+</footer>
+
+<div class="ce-overlay" id="ceOverlay" role="dialog" aria-modal="true" aria-labelledby="ceTitle" hidden>
+    <div class="ce-panel" tabindex="-1">
+        <button type="button" class="ce-stop" id="ceClose">Stop</button>
+        <div id="ceBody"></div>
+    </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="script.js"></script>
+<script src="art-prompts.js"></script>
+<script src="campus-extras.js"></script>
+<script src="container-exercise.js"></script>
+<script src="calm-scenes.js"></script>
+<script src="rant.js"></script>
+<script src="scroll-swaps.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script src="study-map-data.js"></script>
+<script src="study-map.js"></script>
+<script src="directions.js"></script>
+<script src="text-cleanup.js"></script>
+<script src="prototype.js"></script>
+<script src="views.js"></script>
+<script src="v58.js"></script>
+<script src="skills.js"></script>
+
+</body>
+</html>

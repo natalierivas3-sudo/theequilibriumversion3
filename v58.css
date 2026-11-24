@@ -1,0 +1,175 @@
+/* Draft v58. Loaded after draft.css. */
+
+/* ---------- Easier to read: colors that meet WCAG AA contrast (light mode only; dark mode keeps its own) ---------- */
+@media not (prefers-color-scheme: dark) {
+    :root {
+        --burnt-orange: #A84C00;      /* was #BF5700: 4.4:1 on cards, now 5.4:1 */
+        --soft-terracotta: #A1452B;   /* crisis Call/Text buttons and "Need help now?": was 2.8 to 3.2:1, now 5.5:1 or better */
+    }
+    .disclaimer-note { color: #5F6B7A; }
+    .help-now-pill { color: #A1452B; }                 /* was 2.8:1, now 5.5:1 */
+    .study-disclaimer-notice { color: #5F6B7A; }       /* was 3.9:1, now 5.2:1 */
+    .crisis-number { color: #A1452B; }                  /* crisis call buttons: was 2.8:1, now 5.5:1 */
+    .crisis-subtext { color: #5F6B7A; }
+    .card-safety { color: #4A5F6E; }
+}
+.price-free small { opacity: 1; font-size: 0.72rem; }
+
+/* Slightly larger small labels (were 11px). */
+.res-category { font-size: 0.78rem; }
+.res-tag { font-size: 0.78rem; }
+.spot-map-privacy, .spot-map-hint { font-size: 0.85rem; }
+
+/* Cleaner header on the smallest phones. */
+@media (max-width: 360px) {
+    header .nav-container .brand-logo .brand-title { font-size: 1rem; }
+    header .nav-container .help-now-pill { margin-left: auto; margin-right: 0.5rem; padding: 0.35rem 0.6rem; font-size: 0.72rem; }
+    header .nav-container { gap: 0.4rem; }
+}
+
+/* ---------- Help is easiest to reach ---------- */
+/* Gentler options on the Crisis page. */
+.crisis-gentle {
+    margin-top: 1.25rem; padding: 1rem 1.25rem; border-radius: 14px;
+    background: var(--sage-light); text-align: center;
+}
+.crisis-gentle p { margin: 0 0 0.6rem; }
+.crisis-gentle-links { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+.crisis-gentle-links a {
+    padding: 0.55rem 1rem; border-radius: 999px; border: 1px solid var(--sage-green);
+    color: var(--sage-dark); font-weight: 600; text-decoration: none; background: var(--white);
+}
+
+/* Empty search offers support. */
+.no-results-support { display: block; margin-top: 0.6rem; }
+.no-results-support a { color: var(--burnt-orange); font-weight: 600; }
+
+/* ---------- Shorter Study spots page ---------- */
+/* Hide empty photo boxes until a real photo exists. */
+.spot-photo-empty { display: none; }
+
+/* ---------- Sharing ---------- */
+.share-site-btn { margin-top: 0.75rem; }
+.feedback-simple { display: flex; flex-direction: column; align-items: center; gap: 0.35rem; }
+
+/* ---------- Study spots map inside "Find a study spot" ---------- */
+.spot-map-wrap.in-guide { margin: 0.5rem 0 1.25rem; }
+.closest-hint { margin: 0 0 0.5rem; font-size: 0.9rem; color: var(--soft-text, #55625D); }
+.walk-time {
+    display: inline-block; margin-bottom: 0.35rem; padding: 0.15rem 0.55rem; border-radius: 999px;
+    font-size: 0.78rem; font-weight: 600; background: var(--sage-light); color: var(--sage-dark);
+}
+/* Street map beyond campus: soft, so the campus drawing and pins stand out. */
+.osm-tiles { filter: grayscale(0.6) sepia(0.15); }
+@media (prefers-color-scheme: dark) { .osm-tiles { filter: invert(1) hue-rotate(180deg) brightness(0.75) grayscale(0.5); } }
+
+/* ---------- Calm me: three main choices, a short check-in, the rest folded away ---------- */
+.calm-choices-v58 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 760px) { .calm-choices-v58 { grid-template-columns: 1fr; } }
+a.calm-choice { text-decoration: none; color: inherit; }
+.calm-choice .calm-time, .calm-pick .calm-time { white-space: nowrap; }
+
+.calm-tailor { margin-top: 1rem; }
+.calm-tailor-start {
+    width: 100%; padding: 0.9rem 1rem; border-radius: 14px; text-align: left; cursor: pointer;
+    border: 1.5px dashed var(--sage-green); background: transparent; color: var(--charcoal); font: inherit;
+}
+.calm-tailor-start strong { color: var(--sage-dark); }
+.calm-tailor-start:hover { background: var(--sage-light); }
+
+.calm-steps {
+    padding: 1.1rem 1.1rem 0.9rem; border-radius: 16px; background: var(--sage-light);
+    display: grid; gap: 0.7rem;
+}
+.calm-step-count { margin: 0; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sage-dark); }
+.calm-step-q { margin: 0; font-family: 'Lora', Georgia, serif; font-weight: 500; font-size: 1.25rem; }
+.calm-step-options { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.calm-step-opt {
+    padding: 0.6rem 1rem; border-radius: 999px; border: 1.5px solid var(--sage-green);
+    background: var(--white); color: var(--charcoal); font: inherit; font-weight: 500; cursor: pointer;
+}
+.calm-step-opt:hover, .calm-step-opt:focus-visible { background: var(--sage-green); color: #fff; }
+.calm-step-links { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.9rem; }
+
+.calm-pick {
+    display: flex; gap: 0.75rem; align-items: center; width: 100%; text-align: left; cursor: pointer;
+    padding: 0.8rem 0.9rem; border-radius: 14px; border: 1.5px solid var(--line, rgba(44,53,49,0.12));
+    background: var(--white); color: inherit; font: inherit; text-decoration: none;
+}
+.calm-pick-first { border-color: var(--sage-green); padding: 1rem; }
+.calm-pick-first strong { font-size: 1.05rem; }
+.calm-pick .calm-text { flex: 1; min-width: 0; }
+.calm-pick .calm-text small { display: block; color: var(--text-soft, #55625D); }
+.calm-pick:hover { border-color: var(--sage-green); }
+.calm-pick-rest { display: grid; gap: 0.5rem; }
+.calm-or { margin: 0.2rem 0 0; font-size: 0.85rem; color: var(--text-soft, #55625D); }
+.calm-gentle { margin: 0.2rem 0 0; font-size: 0.92rem; }
+
+.calm-all { margin-top: 1rem; }
+.calm-all > summary { cursor: pointer; font-weight: 600; color: var(--sage-dark); padding: 0.4rem 0; }
+.calm-all .calm-more-list { margin-top: 0.5rem; }
+#calmMake.swap-row { width: 100%; }
+
+/* ---------- Calm me: regulation scale (1 steady → 5 can't cope) ---------- */
+.calm-scale { --lvl-color: #4A6B5D; display: grid; gap: 0.6rem; }
+.calm-scale[data-level="2"] { --lvl-color: #6F8A4E; }
+.calm-scale[data-level="3"] { --lvl-color: #A0741C; }
+.calm-scale[data-level="4"] { --lvl-color: #B4552D; }
+.calm-scale[data-level="5"] { --lvl-color: #9E3A2A; }
+.calm-scale input[type="range"] {
+    width: 100%; height: 10px; margin: 0.4rem 0; border-radius: 999px; appearance: none; -webkit-appearance: none;
+    background: linear-gradient(90deg, #4A6B5D, #6F8A4E, #A0741C, #B4552D, #9E3A2A); cursor: pointer;
+}
+.calm-scale input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 30px; height: 30px; border-radius: 50%;
+    background: var(--white, #fff); border: 4px solid var(--lvl-color); box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.calm-scale input[type="range"]::-moz-range-thumb {
+    width: 24px; height: 24px; border-radius: 50%; background: var(--white, #fff); border: 4px solid var(--lvl-color);
+}
+.calm-scale-ticks { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.35rem; }
+.calm-tick {
+    min-height: 40px; border-radius: 10px; border: 1.5px solid rgba(44,53,49,0.15); background: var(--white);
+    font: inherit; font-weight: 600; color: var(--charcoal); cursor: pointer;
+}
+.calm-tick.on { background: var(--lvl-color); border-color: var(--lvl-color); color: #fff; }
+.calm-scale-ends { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-soft, #55625D); }
+.calm-scale-read {
+    display: grid; gap: 0.15rem; padding: 0.75rem 0.9rem; border-radius: 12px;
+    background: var(--white); border-left: 5px solid var(--lvl-color);
+}
+.calm-scale-label { font-family: 'Lora', Georgia, serif; font-size: 1.2rem; color: var(--lvl-color); }
+.calm-scale-desc { font-size: 0.92rem; }
+.calm-next { justify-self: start; }
+@media (prefers-color-scheme: dark) {
+    .calm-scale-label { color: var(--charcoal); }
+}
+
+/* ---------- Calm me: crisis support + breathing ---------- */
+.calm-crisis { padding: 1rem; border-radius: 14px; background: var(--terracotta-light); border: 1.5px solid var(--soft-terracotta); display: grid; gap: 0.5rem; }
+.calm-crisis p { margin: 0; }
+.calm-crisis-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+.calm-crisis-btn {
+    display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 0.5rem 0.75rem; border-radius: 999px;
+    background: var(--soft-terracotta); color: #fff; font-weight: 700; text-decoration: none; text-align: center;
+}
+.calm-crisis-wide { grid-column: 1 / -1; background: var(--white); color: var(--soft-terracotta); border: 1.5px solid var(--soft-terracotta); }
+.calm-crisis-more { color: var(--soft-terracotta); font-weight: 600; }
+.calm-breathe-q { margin-top: 0.4rem; }
+
+.breath-box { display: grid; justify-items: center; gap: 0.5rem; padding: 1rem; border-radius: 14px; background: var(--white); }
+.breath-circle {
+    width: 120px; height: 120px; border-radius: 50%;
+    background: radial-gradient(circle, var(--sage-light) 0%, var(--sage-green) 100%);
+    transform: scale(0.6); transition: transform var(--breath-secs, 4s) ease-in-out;
+}
+.breath-box.inhale .breath-circle { transform: scale(1); }
+.breath-box.exhale .breath-circle { transform: scale(0.6); }
+.breath-text { font-family: 'Lora', Georgia, serif; font-size: 1.15rem; min-height: 1.6em; }
+.breath-count { font-weight: 600; color: var(--sage-dark); }
+.breath-how { margin: 0; font-size: 0.85rem; color: var(--text-soft, #55625D); }
+@media (prefers-reduced-motion: reduce) { .breath-circle { transition: none; } }
+.calm-more-ways { margin-top: 0.2rem; text-align: center; }
+.calm-coping { display: grid; gap: 0.5rem; }
+/* Calm me: five choices. Pairs on wide screens; the guided video spans the last row. */
+.calm-choices-v58 > [data-calm-video] { grid-column: 1 / -1; }

@@ -1,0 +1,83 @@
+/* Draft B: simplified home page. Loaded after prototype.css. */
+
+/* Views: Home shows only the [data-home] sections; other pages show alone. */
+main > section.page-view:not(.is-current) { display: none; }
+body.on-page main > section[data-home] { display: none; }
+body.show-about main > section.page-view { display: none; }
+body.on-page .page-view.is-current { padding-top: 2.25rem; min-height: 60vh; }
+
+/* Tighter hero so the six choices sit on the first screen. */
+.hero.hero-app { padding: 2.25rem 0 1rem; }
+.hero-app h1 { margin-bottom: 0.4rem; }
+.hero-app .hero-lede { margin-bottom: 1.25rem; }
+@media (max-width: 768px) {
+    .hero.hero-app { padding-top: 1.25rem; }
+    .hero-app h1 { font-size: 1.9rem; }
+}
+
+/* Six choices instead of eight. */
+.need-grid { grid-template-columns: repeat(6, 1fr); }
+@media (max-width: 1024px) { .need-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) { .need-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.newcomer-row { gap: 1.25rem; flex-wrap: wrap; }
+
+/* Results stay hidden until someone picks a need. */
+body:not(.need-picked) #guidePanel #results { display: none; }
+
+/* One-line crisis strip on Home. */
+.home-crisis { padding-block: 0.5rem 1.5rem; }
+.home-crisis p {
+    margin: 0; padding: 0.8rem 1rem; border-radius: 12px; font-size: 0.95rem;
+    background: var(--terracotta-light); color: var(--charcoal); text-align: center;
+}
+.home-crisis a { color: var(--burnt-orange); font-weight: 600; }
+
+.feedback-simple { padding-block: 1rem 2.5rem; }
+
+/* Simpler footer. */
+.footer-simple { display: grid; gap: 0.6rem; max-width: 70ch; }
+.footer-simple p { margin: 0; opacity: 0.85; font-size: 0.9rem; line-height: 1.55; }
+.footer-row { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 0.25rem; }
+.footer-row a { color: inherit; font-size: 0.9rem; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Every card footer: tags on their own line, then the actions underneath,
+   as equal-width buttons side by side. Same layout on every card. */
+.res-tag { white-space: nowrap; }
+.res-footer { flex-direction: column; align-items: stretch; gap: 0.75rem; }
+.res-footer .res-tags-list:empty { display: none; }
+.res-footer .crisis-actions,
+.res-footer .place-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr)); gap: 0.5rem; width: 100%; }
+.res-footer .crisis-actions a,
+.res-footer .place-actions > * { justify-content: center; text-align: center; margin: 0; }
+/* Plain "View … →" links become outline buttons that match "Website". */
+.res-footer > .res-link {
+    align-self: stretch; justify-content: center; text-align: center; white-space: normal;
+    min-height: 2.5rem; padding: 0.5rem 1rem; border-radius: 999px;
+    border: 1px solid var(--burnt-orange); background: transparent; text-decoration: none;
+}
+.res-footer > .res-link:hover { background: var(--burnt-orange-light); text-decoration: none; }
+
+/* UT maps: small tags under each title for quick scanning. */
+.map-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.35rem 0 0.6rem; }
+.map-tags span {
+    font-size: 0.75rem; font-weight: 600; line-height: 1; white-space: nowrap;
+    padding: 0.3rem 0.6rem; border-radius: 999px;
+    background: var(--sage-light); color: var(--sage-dark);
+}
+
+/* Origin story: skimmable. "In short" box up top, bold key phrases, shorter lines. */
+.about-gist {
+    margin: 1.5rem 0 2rem; padding: 1.1rem 1.25rem; border-radius: 14px;
+    background: var(--sage-light); border-left: 4px solid var(--sage-green);
+}
+.about-gist-label {
+    margin: 0 0 0.5rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--sage-dark);
+}
+.about-gist ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.45rem; }
+.about-gist li { line-height: 1.5; }
+.about-body, .about-gist { max-width: 62ch; }
+.about-body p { line-height: 1.7; }
+.about-body strong, .about-gist strong { font-weight: 600; color: var(--charcoal); }
+.about-body h2 { margin-top: 2.25rem; }

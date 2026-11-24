@@ -1,0 +1,218 @@
+/* Coping skills page (#skills), draft v58. */
+.sk-wrap { max-width: 860px; margin: 0 auto; }
+.sk-head { margin-bottom: 1.25rem; }
+.sk-ask { font-family: 'Lora', Georgia, serif; font-weight: 500; font-size: 1.35rem; margin: 0 0 0.75rem; }
+
+/* Three states */
+.sk-states { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+@media (max-width: 700px) { .sk-states { grid-template-columns: 1fr; } }
+.sk-state {
+    display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 0.75rem; align-items: center;
+    text-align: left; padding: 1rem 1.1rem; border-radius: 16px; cursor: pointer; font: inherit; color: var(--charcoal);
+    background: var(--white); border: 1.5px solid rgba(44, 53, 49, 0.12);
+}
+.sk-state span { grid-row: 1 / span 2; font-size: 1.8rem; }
+.sk-state strong { font-family: 'Lora', Georgia, serif; font-size: 1.08rem; font-weight: 600; }
+.sk-state small { color: var(--text-soft, #55625D); }
+.sk-state:hover, .sk-state.on { border-color: var(--sage-green); background: var(--sage-light); }
+
+.sk-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; margin: 0.9rem 0 1.25rem; font-size: 0.92rem; }
+.sk-kit {
+    padding: 0.35rem 0.8rem; border-radius: 999px; border: 1.5px solid var(--burnt-orange); background: transparent;
+    color: var(--burnt-orange); font: inherit; font-weight: 600; cursor: pointer;
+}
+.sk-kit.on { background: var(--burnt-orange); color: #fff; }
+.sk-reduce-opt { display: inline-flex; gap: 0.35rem; align-items: center; color: var(--text-soft, #55625D); cursor: pointer; }
+
+/* Tool cards: a grid on wide screens, swipeable on phones */
+.sk-tools-head { font-family: 'Lora', Georgia, serif; font-weight: 500; font-size: 1.1rem; margin: 0.5rem 0 0.75rem; scroll-margin-top: 90px; }
+.sk-tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.9rem; }
+.sk-card {
+    display: grid; gap: 0.55rem; align-content: start; padding: 1rem 1.1rem; border-radius: 16px;
+    background: var(--white); border: 1px solid rgba(44, 53, 49, 0.1); min-width: 0;
+}
+.sk-card-top { display: grid; grid-template-columns: auto 1fr auto; gap: 0.6rem; align-items: center; }
+.sk-icon { font-size: 1.5rem; }
+.sk-name { margin: 0; font-family: 'Lora', Georgia, serif; font-size: 1.08rem; font-weight: 600; }
+.sk-dbt { font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 500; color: var(--text-soft, #55625D); }
+.sk-star { border: none; background: none; font-size: 1.35rem; line-height: 1; cursor: pointer; color: var(--burnt-orange); padding: 0.25rem; min-width: 36px; min-height: 36px; }
+.sk-lines { margin: 0; line-height: 1.5; }
+.sk-warn { margin: 0; font-size: 0.85rem; color: var(--text-soft, #55625D); }
+.sk-go { justify-self: start; }
+.sk-why summary { cursor: pointer; font-size: 0.88rem; font-weight: 600; color: var(--sage-dark); }
+.sk-why p { margin: 0.4rem 0 0; font-size: 0.9rem; line-height: 1.5; }
+.sk-empty { color: var(--text-soft, #55625D); }
+.sk-nav { display: none; }
+@media (max-width: 700px) {
+    .sk-tools {
+        display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 0.75rem; padding-bottom: 0.5rem;
+        -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    }
+    .sk-tools::-webkit-scrollbar { display: none; }
+    .sk-card { flex: 0 0 88%; scroll-snap-align: start; }
+    .sk-nav:not([hidden]) { display: flex; justify-content: center; gap: 0.75rem; margin-top: 0.5rem; }
+}
+.sk-navbtn { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(44, 53, 49, 0.2); background: var(--white); font-size: 1.1rem; cursor: pointer; color: var(--charcoal); }
+
+.sk-still { margin: 1.5rem 0 0.4rem; }
+.sk-still a, .sk-fine a { color: var(--burnt-orange); font-weight: 600; }
+.sk-fine { margin: 0; font-size: 0.85rem; color: var(--text-soft, #55625D); }
+
+/* Crisis bar stays on screen on this page */
+.sk-crisisbar {
+    position: sticky; bottom: 0; z-index: 20; margin: 1.5rem auto 0; max-width: 860px;
+    display: flex; flex-wrap: wrap; gap: 0.4rem 0.9rem; align-items: center; justify-content: center;
+    padding: 0.65rem 1rem calc(0.65rem + env(safe-area-inset-bottom, 0px)); border-radius: 14px 14px 0 0;
+    background: var(--terracotta-light); border: 1px solid var(--soft-terracotta); border-bottom: none; font-size: 0.92rem;
+}
+.sk-crisisbar span { font-weight: 700; }
+.sk-crisisbar a { color: var(--soft-terracotta); font-weight: 700; }
+
+/* Tip of the day (Home) */
+.sk-tip-wrap { padding-block: 0 0.75rem; }
+.sk-tip { margin: 0; display: flex; flex-wrap: wrap; gap: 0.3rem 0.6rem; align-items: baseline; justify-content: center; text-align: center; font-size: 0.95rem; }
+.sk-tip-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sage-dark); }
+
+.calm-skills-link { margin: 0.9rem 0 0; }
+.calm-skills-link a { color: var(--sage-dark); font-weight: 600; }
+
+/* Focused tool panel */
+body.sk-open { overflow: hidden; }
+.sk-overlay {
+    position: fixed; inset: 0; z-index: 1000; background: rgba(23, 26, 24, 0.55);
+    display: flex; align-items: flex-end; justify-content: center;
+}
+.sk-overlay[hidden] { display: none; }
+@media (min-width: 701px) { .sk-overlay { align-items: center; } }
+.sk-panel {
+    width: min(560px, 100%); max-height: 92vh; overflow-y: auto; background: var(--warm-ivory, #FBF9F5);
+    border-radius: 20px 20px 0 0; padding: 1.1rem 1.25rem calc(1.25rem + env(safe-area-inset-bottom, 0px));
+    display: grid; gap: 0.75rem; outline: none;
+}
+@media (min-width: 701px) { .sk-panel { border-radius: 20px; } }
+.sk-panel-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.sk-panel-head h2 { margin: 0; font-family: 'Lora', Georgia, serif; font-size: 1.3rem; font-weight: 600; }
+.sk-close { width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(44, 53, 49, 0.08); font-size: 1rem; cursor: pointer; color: var(--charcoal); }
+.sk-body { display: grid; gap: 0.8rem; justify-items: center; text-align: center; min-height: 180px; align-content: start; }
+.sk-panel-crisis { margin: 0; text-align: center; font-size: 0.85rem; }
+.sk-panel-crisis a { color: var(--soft-terracotta); font-weight: 700; }
+
+.sk-q { margin: 0; font-size: 1.1rem; font-weight: 500; }
+.sk-big { margin: 0; font-family: 'Lora', Georgia, serif; font-size: 1.4rem; }
+.sk-hint, .sk-step { margin: 0; font-size: 0.85rem; color: var(--text-soft, #55625D); }
+.sk-step { font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sage-dark); }
+.sk-say { margin: 0; font-family: 'Lora', Georgia, serif; font-size: 1.25rem; min-height: 1.6em; }
+.sk-result { margin: 0; font-size: 1.05rem; }
+.sk-skip { font-size: 0.9rem; }
+
+.sk-rate { width: 100%; max-width: 380px; }
+.sk-rate input { width: 100%; accent-color: var(--sage-green); height: 28px; }
+.sk-rate-ends { display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--text-soft, #55625D); }
+.sk-rate-ends output { font-size: 1.6rem; font-weight: 700; color: var(--charcoal); }
+
+.sk-pick { display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center; }
+.sk-chip {
+    padding: 0.5rem 0.95rem; border-radius: 999px; border: 1.5px solid var(--sage-green); background: var(--white);
+    font: inherit; color: var(--charcoal); cursor: pointer; min-height: 40px;
+}
+.sk-chip.on { background: var(--sage-green); color: #fff; }
+
+/* Breathing pacer */
+.sk-pacer { display: grid; justify-items: center; gap: 0.6rem; }
+.sk-orb {
+    width: 150px; height: 150px; border-radius: 50%; transform: scale(0.55);
+    background: radial-gradient(circle, var(--sage-light) 0%, var(--sage-green) 100%);
+    transition: transform var(--secs, 4s) ease-in-out;
+}
+.sk-pacer.in .sk-orb { transform: scale(1); }
+.sk-pacer.out .sk-orb { transform: scale(0.55); }
+.sk-bar { display: none; width: 220px; height: 10px; border-radius: 999px; background: var(--sage-light); overflow: hidden; }
+.sk-bar span { display: block; height: 100%; width: 0; background: var(--sage-green); transition: width var(--secs, 4s) linear; }
+.sk-pacer.in .sk-bar span { width: 100%; }
+.sk-pacer.out .sk-bar span { width: 0; }
+/* Reduced motion: a filling bar instead of a growing circle */
+body.sk-reduce .sk-orb, .sk-pacer.still .sk-orb { display: none; }
+body.sk-reduce .sk-bar, .sk-pacer.still .sk-bar { display: block; }
+@media (prefers-reduced-motion: reduce) { .sk-orb { transition: none; } }
+
+.sk-count { font-family: 'Lora', Georgia, serif; font-size: 3rem; font-weight: 600; color: var(--sage-dark); }
+
+/* Squeeze & release */
+.sk-squeeze { height: 90px; display: grid; place-items: center; }
+.sk-sq-shape { width: 80px; height: 80px; border-radius: 22px; background: var(--sage-green); transition: transform 0.6s ease, border-radius 0.6s ease, opacity 0.6s; opacity: 0.6; }
+.sk-squeeze.tense .sk-sq-shape { transform: scale(0.65); border-radius: 12px; opacity: 1; background: var(--soft-terracotta); }
+.sk-squeeze.loose .sk-sq-shape { transform: scale(1.1); border-radius: 50%; opacity: 0.45; }
+body.sk-reduce .sk-sq-shape { transition: none; }
+
+/* 5-4-3-2-1 */
+.sk-dots { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; }
+.sk-dot { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--sage-green); background: var(--white); cursor: pointer; }
+.sk-dot.on { background: var(--sage-green); }
+
+/* STOP */
+.sk-stop-word { margin: 0; font-family: 'Lora', Georgia, serif; font-size: 2.4rem; font-weight: 600; color: var(--sage-dark); }
+.sk-bigbtn { min-width: 160px; }
+
+/* Name the feeling */
+.sk-faces { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.45rem; width: 100%; }
+.sk-face {
+    display: grid; justify-items: center; gap: 0.15rem; padding: 0.55rem 0.2rem; border-radius: 12px; cursor: pointer;
+    border: 1.5px solid rgba(44, 53, 49, 0.12); background: var(--white); font: inherit; font-size: 0.82rem; color: var(--charcoal);
+}
+.sk-face span { font-size: 1.6rem; }
+.sk-face.on { border-color: var(--sage-green); background: var(--sage-light); }
+#skNamed { display: grid; gap: 0.6rem; justify-items: center; width: 100%; }
+
+/* Do the opposite */
+.sk-flip {
+    position: relative; width: 100%; max-width: 380px; min-height: 160px; border: none; background: none; cursor: pointer;
+    perspective: 900px; font: inherit; color: var(--charcoal); padding: 0;
+}
+.sk-flip-front, .sk-flip-back {
+    position: absolute; inset: 0; display: grid; align-content: center; gap: 0.4rem; padding: 1rem; border-radius: 16px;
+    backface-visibility: hidden; transition: transform 0.5s ease; font-family: 'Lora', Georgia, serif; font-size: 1.2rem;
+}
+.sk-flip-front { background: var(--terracotta-light); }
+.sk-flip-back { background: var(--sage-light); transform: rotateY(180deg); }
+.sk-flip.flipped .sk-flip-front { transform: rotateY(-180deg); }
+.sk-flip.flipped .sk-flip-back { transform: rotateY(0); }
+.sk-flip small { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-soft, #55625D); }
+.sk-flip em { font-family: 'Inter', sans-serif; font-style: normal; font-size: 0.8rem; color: var(--text-soft, #55625D); }
+body.sk-reduce .sk-flip-front, body.sk-reduce .sk-flip-back { transition: none; }
+
+/* Daily basics */
+.sk-basics { display: grid; gap: 0.45rem; width: 100%; max-width: 420px; text-align: left; }
+.sk-toggle { display: flex; gap: 0.6rem; align-items: center; padding: 0.6rem 0.8rem; border-radius: 12px; background: var(--white); cursor: pointer; }
+.sk-toggle input { width: 22px; height: 22px; accent-color: var(--sage-green); }
+
+/* Eight menu links: keep them on one line on mid-size screens. */
+@media (min-width: 769px) and (max-width: 1180px) {
+    header .nav-links { gap: 0.75rem; }
+    header .nav-links a { font-size: 0.82rem; }
+    header .help-now-pill { margin-right: 0.5rem; padding-inline: 0.7rem; }
+}
+/* Small tablets: Origin story and Feedback stay in the footer to keep the menu on one line. */
+@media (min-width: 769px) and (max-width: 1010px) {
+    header .nav-links a[href="#about"], header .nav-links .nav-feedback { display: none; }
+    header .nav-links { gap: 0.6rem; }
+}
+@media (min-width: 769px) and (max-width: 870px) {
+    header .nav-links { gap: 0.5rem; }
+    header .nav-links a { font-size: 0.78rem; }
+    header .brand-title { font-size: 1.1rem; }
+    header .help-now-pill { padding: 0.3rem 0.55rem; font-size: 0.74rem; margin-right: 0.35rem; }
+}
+
+/* Tip of the day: the tip itself is the link. */
+.sk-tip a.sk-tip-text { color: var(--charcoal); text-decoration: underline; text-decoration-color: var(--sage-green); text-underline-offset: 3px; }
+.sk-tip a.sk-tip-text:hover { color: var(--sage-dark); }
+
+/* Crisis bar: pinned to the bottom of the screen the whole time the Coping skills page is open. */
+.sk-crisisbar {
+    position: fixed; left: 0; right: 0; bottom: 0; margin: 0; max-width: none;
+    border-radius: 0; border-left: none; border-right: none; border-bottom: none;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+}
+/* Room at the bottom so the bar never covers the last lines or the footer. */
+main:has(#skills.is-current) ~ footer { padding-bottom: 4.5rem; }
+@media (max-width: 520px) { main:has(#skills.is-current) ~ footer { padding-bottom: 6.5rem; } }
