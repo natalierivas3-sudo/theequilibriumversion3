@@ -8,7 +8,7 @@
 (function () {
     "use strict";
 
-    const SITE_URL = "https://natalierivas3-sudo.github.io/equilibrium-test/";
+    const SITE_URL = "https://natalierivas3-sudo.github.io/theequilibriumversion3/";
 
     function toast(msg) {
         const t = document.getElementById("toast");

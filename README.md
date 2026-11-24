@@ -13,4 +13,4 @@ This is the v58 draft. Compared with Test version 57 it adds:
 
 It's a static site. Open `index.html`, or turn on GitHub Pages (Settings → Pages → Deploy from branch → `main` / root).
 
-The link preview tags in `index.html` point to `https://natalierivas3-sudo.github.io/equilibrium-test/`. If this repo gets its own Pages address, update `og:url`, `og:image`, and `SITE_URL` in `v58.js` to match.
+Live at https://natalierivas3-sudo.github.io/theequilibriumversion3/. The link preview tags in `index.html` and `SITE_URL` in `v58.js` point there.
