@@ -25,3 +25,5 @@ Live: https://natalierivas3-sudo.github.io/equilibrium-test/
 Live: https://natalierivas3-sudo.github.io/the-equilibrium/
 
 - The first site: everything on one long page.
+
+- v3 update (Nov 25): tapping a plain "988" link now asks Call 988 or Text 988 first. Buttons already labeled "Call 988" or "Text 988" go straight through.

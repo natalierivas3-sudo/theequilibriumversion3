@@ -47,8 +47,8 @@
 
         // Any call or text to a crisis or support line, wherever it is on the site (just the line, never who).
         const link = q('a[href^="tel:"], a[href^="sms:"]');
-        if (link && !link.hasAttribute("data-crisis")) {
-            const where = link.closest("#skills") ? "coping_skills" : link.closest("#calmPanel") ? "calm_me" : link.closest(".home-crisis") ? "home" : "other";
+        if (link && !link.hasAttribute("data-crisis") && !(window.eqAsk988 && window.eqAsk988(link) && !link.closest(".ct-sheet"))) {
+            const where = link.dataset.where ? link.dataset.where : link.closest("#skills") ? "coping_skills" : link.closest("#calmPanel") ? "calm_me" : link.closest(".home-crisis") ? "home" : "other";
             send("crisis_contact", { line: link.getAttribute("href").replace(/^(tel|sms):/, "").slice(0, 12), method: link.getAttribute("href").startsWith("sms") ? "text" : "call", where });
         }
     }, true);
