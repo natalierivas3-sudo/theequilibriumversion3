@@ -1300,7 +1300,7 @@
         });
 
         // Test strip
-        $("#changesToggle").addEventListener("click", () => {
+        $("#changesToggle")?.addEventListener("click", () => {
             const p = $("#changesPanel");
             p.hidden = !p.hidden;
             $("#changesToggle").setAttribute("aria-expanded", String(!p.hidden));

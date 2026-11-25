@@ -1,6 +1,19 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js): anonymous visit counts, labeled by site version. Ads features off. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DC9YXMEDDM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DC9YXMEDDM', {
+    site_version: 'v3',
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false
+  });
+</script>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
@@ -32,35 +45,6 @@
 <link rel="stylesheet" href="center.css">
 </head>
 <body>
-
-<div class="test-strip" id="testStrip">
-    <span><strong>Draft v58</strong> · compare with Test version 57</span>
-    <button type="button" id="changesToggle" aria-expanded="false" aria-controls="changesPanel">What's different?</button>
-</div>
-<div class="changes-panel" id="changesPanel" hidden>
-    <div class="container">
-        <h3>What's different from Test version 57</h3>
-        <ul>
-            <li><strong>Nothing open on Home.</strong> Guide me, Surprise me, and Calm me stay closed until you pick one. Tap the same button again to close it.</li>
-            <li><strong>Help is easier to reach.</strong> Links can open straight to Calm me (#calm), Talk to someone (#talk), or Surprise me (#surprise).</li>
-            <li><strong>Searching a feeling finds support.</strong> Words like “stressed,” “lonely,” or “therapy” bring up counseling and support first. “dogs” now finds dog spots.</li>
-            <li><strong>No dead ends.</strong> “Clear filters” shows everything again, and Study spots is no longer emptied by it. An empty search offers someone to talk to.</li>
-            <li><strong>All resources has category buttons</strong> instead of one “All ideas” button.</li>
-            <li><strong>Shorter Study spots page.</strong> Empty “Photo needed” boxes are hidden until photos are added.</li>
-            <li><strong>Easier to read.</strong> Darker orange and gray text that meets contrast standards, slightly larger labels, and a cleaner header on small phones.</li>
-            <li><strong>Better when shared.</strong> Links show a title, description, and preview image in texts and on social media, plus a site icon and a “Share The Equilibrium” button.</li>
-            <li><strong>Study spots map in “Find a study spot.”</strong> The map shows right above the cards. Tap “Show where I am” to sort every spot closest first, with walking times.</li>
-            <li><strong>Coffee shops on the map:</strong> Epoch (North Loop), Bennu (Highland), Flightpath, Codependent, Monkey Nest, and Austin Central Library now have pins. The map can zoom out to show them, with a faded street map beyond campus.</li>
-            <li><strong>Calmer “Calm me.”</strong> Five choices up front: Set it aside, Rant, 3 good things, Other coping skills, and a trauma-informed guided video. Not sure? Three one-tap questions (how you feel, how much time, what sounds better) suggest one thing to try and two backups. Everything else is folded under “See all ways to steady yourself.”</li>
-            <li><strong>“How regulated do you feel?”</strong> The check-in starts with a 1–5 scale you slide or tap, from Steady to Can't cope. At 5 it shows crisis support first, a 1-minute breathing guide, and other ways to cope.</li>
-            <li><strong>Insight Timer</strong> (free meditation app) is now first in All resources, shows under the Free filter, and is in Calm me.</li>
-            <li><strong>New Coping skills page.</strong> “How are you right now?” (overwhelmed, numb, or stressed) shows a few matching tools: breathing pacer, cool down fast, move it out, squeeze &amp; release, 5-4-3-2-1, pause button, distraction shuffle, name the feeling, do the opposite, daily basics. Exercises have a 0–10 rating before and after. Star tools to build “My kit.” A crisis bar stays on screen. Adapted from DBT.</li>
-            <li><strong>Tip of the day</strong> on Home rotates through the coping tools.</li>
-            <li><strong>Cleaner cards:</strong> student quotes removed; practical tips stay.</li>
-            <li>The Crisis page also offers gentler options for when it isn't an emergency.</li>
-        </ul>
-    </div>
-</div>
 
 <header>
     <div class="container nav-container">
@@ -539,6 +523,7 @@
         <div class="footer-simple">
             <span class="brand-title" style="color: var(--white); font-size: 1.25rem;">The Equilibrium</span>
             <p>A Dell Med Psychiatry Interest Group project by Natalie Rivas, built with <a href="https://machinemindsautomation.com/#" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Machine Minds Automation</a>. Student-maintained, not a substitute for professional or emergency care.</p>
+            <p class="footer-privacy">We count visits anonymously with Google Analytics. Nothing you type or rate is recorded.</p>
             <nav class="footer-row"><a href="#about" data-about-link>Origin story</a><a href="#crisis">Need help now?</a><a href="https://forms.gle/pxBk7z8dh8vFdkC1A" target="_blank" rel="noopener noreferrer" class="dynamic-feedback-link">Send feedback ↗</a></nav>
         </div>
         <div class="footer-bottom">
@@ -570,6 +555,7 @@
 <script src="text-cleanup.js"></script>
 <script src="prototype.js"></script>
 <script src="views.js"></script>
+<script src="analytics.js"></script>
 <script src="v58.js"></script>
 <script src="skills.js"></script>
 <script src="home-closed.js"></script>

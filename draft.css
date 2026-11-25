@@ -81,3 +81,5 @@ body:not(.need-picked) #guidePanel #results { display: none; }
 .about-body p { line-height: 1.7; }
 .about-body strong, .about-gist strong { font-weight: 600; color: var(--charcoal); }
 .about-body h2 { margin-top: 2.25rem; }
+
+.footer-privacy { margin: 0; font-size: 0.8rem; opacity: 0.75; }
